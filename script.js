@@ -1,6 +1,6 @@
 const main = document.getElementById('main');
-const addUserBtn = document.getElementById('add-user');
-const doubleBtn = document.getElementById('doble');
+const addUserBtn = document.getElementById('add_user');
+const doubleBtn = document.getElementById('double');
 const showMillionairesBtn = document.getElementById('show-millionaires');
 const sortBtn = document.getElementById('sort');
 const calculateWealthBtn = document.getElementById('calculate-wealth');
@@ -27,6 +27,14 @@ async function getRandomUser() {
     addData(newUser);
 }
 
+function dobleMoney() {
+    data = data.map(user => {
+        return {...user, money: user.money * 2};
+    });
+
+    updateDOM();
+}
+
 function addData(obj) {
     data.push(obj);
 
@@ -37,7 +45,7 @@ function updateDOM(providData = data) {
     main.innerHTML = '<h2><strong>Person</strong> Wealth</h2>';
 
     providData.forEach(item => {
-        const element = document.createElement('div')
+        const element = document.createElement('div');
         element.classList.add('person');
         element.innerHTML = `<strong>${item.name}</strong> ${formatMoney(item.money)}`;
         main.appendChild(element);
@@ -49,3 +57,4 @@ function formatMoney(number) {
 }
 
 addUserBtn.addEventListener('click', getRandomUser);
+doubleBtn.addEventListener('click', dobleMoney);
