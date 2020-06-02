@@ -69,3 +69,7 @@ h3 {
     font-size: 20px;
     margin-bottom: 10px;
 }
+
+.wealthEl h3 {
+    background-color: #f4f4f4;
+}
